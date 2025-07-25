@@ -49,17 +49,26 @@
     <p class="p1">Drag the papers to move!</p>
   </div>
 
-  
+<!--try it-->  
   <script>
-    const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    const script = document.createElement('script');
-    script.src = isMobile ? './mobile.js' : './script.js';
-    script.defer = true;
-    document.body.appendChild(script);
+  const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const script = document.createElement('script');
+  script.src = isMobile ? './mobile.js' : './script.js';
+  script.defer = true;
 
-    
-    window.addEventListener('contextmenu', e => e.preventDefault());
-  </script>
+  script.onload = () => {
+    document.querySelectorAll('.paper').forEach(paper => {
+      const p = new Paper();
+      p.init(paper);
+    });
+  };
+
+  document.body.appendChild(script);
+
+  window.addEventListener('contextmenu', e => e.preventDefault());
+</script>
+
+
 
 </body>
 </html>
